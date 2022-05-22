@@ -1,0 +1,115 @@
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+
+.columns {
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.details {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  float: left;
+}
+
+.thumbnail-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  float: left;
+  text-align: center;
+}
+
+.price {
+  font-size: 20px;
+  color: #777474;
+}
+.expire{
+  font-size: 15px;
+  color: #777474;
+}
+
+.wishlist-container {
+  padding-left: 0;
+}
+
+.columns {
+  margin-top: 30px;
+}
+
+.button {
+  width: 100%;
+  border-radius: 0;
+  color: #C28ED1;
+}
+
+.select, select {
+  width: 100%;
+  border-radius: 0 !important;
+}
+
+#wishlist-container {
+  padding-left: 0;
+}
+
+#buy-container {
+  padding-right: 0;
+}
+
+.small-text {
+  font-size: 14px;
+}
+
+.small-text span {
+  font-weight: bold;
+}
+
+.buy-button {
+  background: #C28ED1;
+  color: white;
+  border: none;
+}
+
+.buy-button:hover, .buy-button:active, .buy-button:focus {
+  color: white;
+  opacity: 0.9;
+}
+
+a {
+  color: #ff6900;
+}
+a:hover {
+  color: #ff6900;
+  opacity: 0.8;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+.drift-demo-trigger img{
+  width: 400px;
+}
+
+
+.submit{
+  padding:5px;
+}
+@media only screen and (max-width: 769px) {
+
+  #wishlist-container, #buy-container {
+    padding: 0 0 15px 0;
+  }
+}

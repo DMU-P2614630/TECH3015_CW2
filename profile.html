@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!--- Responsive---->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Link css------>
+    <link rel="stylesheet" href="profile.css">
+    <!---Font---->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@600&display=swap" rel="stylesheet">
+    <!---using Fontawesome---->
+    <script src="https://kit.fontawesome.com/a2d18f7895.js" crossorigin="anonymous"></script>
+    <!---css lightSlider--->
+    <link rel="stylesheet" href="css/lightslider.css">
+    <!---js  link-->
+    <script src="js/JQuery3.3.1.js"></script>
+    <script src="js/lightslider.js"></script>
+    <title>Profile</title>
+  </head>
+  <body>
+    <!--header---->
+    <nav class="header">
+      <a href="index.html" class="logo">Less Waste </a>
+      <!--menu-btn-->
+            <input type="checkbox" class="menu-btn" id="menu-btn"/>
+            <label class="menu-icon" for="menu-btn">
+                <span class="nav-icon"></span>
+            </label>
+      <!---menu---->
+      <ul class="menu" >
+        <li><a href="index.html">Home</a></li>
+        <li><a href="tracking.html">Tracking</a></li>
+        <li><a href="exchange.html">Exchange</a></li>
+        <li><a href="list.html">List</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+
+<!--photo-card-->
+    <aside class="profile-card">
+      <header>
+        <!-- here’s the avatar -->
+          <img src="avatar.png" class="hoverZoomLink" alt="Profile">
+
+        <!-- the username -->
+        <h1>
+                Angie T.
+              </h1>
+        <!-- and role or location -->
+        <h2>
+                Food Comunity
+              </h2>
+      </header>
+      <!-- bit of a bio; who are you? -->
+      <div class="profile-bio">
+        <p>
+        Food Sustainable.
+        </p>
+      </div>
+
+      <!-- some social links to show off -->
+      <ul class="profile-social-links">
+        <li>
+            <span>Share Items</span>
+          <a target="_blank" href="exchange.html">
+            <i class="fa-regular fa-share-from-square"></i>
+
+          </a>
+        </li>
+        <li>
+            <span>Exchange Food</span>
+          <a target="_blank" href="#">
+          <i class="fa-solid fa-arrow-right-arrow-left"></i>
+
+          </a>
+        </li>
+        <li>
+          <span>Check List</span><br>
+          <a target="_blank" href="list.html">
+            <i class="fa-solid fa-list-check"></i>
+          </a>
+        </li>
+        <li>
+          <span>Contact Form</span>
+          <a target="_blank" href="contact.html">
+          <i class="fa-solid fa-address-card"></i>
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+
+
+
+
+  </body>
+</html>

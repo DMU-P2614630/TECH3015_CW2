@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!--- Responsive---->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Link css------>
+    <link rel="stylesheet" href="tracking.css">
+    <!---Font---->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@600&display=swap" rel="stylesheet">
+    <!---using Fontawesome---->
+    <script src="https://kit.fontawesome.com/a2d18f7895.js" crossorigin="anonymous"></script>
+    <!---css lightSlider--->
+    <link rel="stylesheet" href="css/lightslider.css">
+    <!---js  link-->
+    <script src="js/JQuery3.3.1.js"></script>
+    <script src="js/lightslider.js"></script>
+
+    <title>Food tracking</title>
+
+  </head>
+  <body>
+
+    <!--header---->
+    <nav class="header">
+      <a href="index.html" class="logo">Less Waste </a>
+      <!--menu-btn-->
+            <input type="checkbox" class="menu-btn" id="menu-btn"/>
+            <label class="menu-icon" for="menu-btn">
+                <span class="nav-icon"></span>
+            </label>
+      <!---menu---->
+      <ul class="menu" >
+        <li><a href="index.html">Home</a></li>
+        <li><a href="tracking.html">Tracking</a></li>
+        <li><a href="exchange.html">Exchange</a></li>
+        <li><a href="list.html">List</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+
+
+
+    <!-- WELCOME SECTION -->
+        <h1>What's in my storage?</h1>
+    <h2>Add a Product</h2>
+    <form>
+      <label for="name">
+        Name
+        <input type="text" id="name"/><br>
+      </label>
+      <label for="price">
+        Price
+        <input type="number" id="price"/><br>
+      </label>
+      <label for="place">
+        Place
+        <input type="text" id="place"/><br>
+      </label>
+      <label for="quantity">
+        Quantity
+        <input type="number" id="quantity" /><br>
+      </label>
+      <button id="addPizzaButton-1">Add Product!</button>
+    </form>
+    <br>
+
+<!--the table to shows--->
+    <table id="listOfPizzas">
+      <thead>
+        <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Place</th>
+        <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+<!---link the JavaScript--->
+    <script src="https://cdn.jsdelivr.net/npm/pouchdb@7.2.1/dist/pouchdb.min.js"></script>
+
+    <!---database to save the data of user--->
+    <script>
+      let db = new PouchDB("products");
+
+      function addPizza () {
+        let newPizza = {
+          _id: new Date().toISOString(),
+          name: document.getElementById("name").value,
+          price: document.getElementById("price").value,
+          place: document.getElementById("place").value,
+          quantity: document.getElementById("quantity").value,
+        };
+
+        db.put(newPizza);
+      };
+
+      function removePizza() {
+        db.destroy();
+
+      }
+
+      function showPizzas (err, doc) {
+        console.log(doc.rows);
+        let tableRows = "";
+        doc.rows.forEach((row) => {
+          let thisPizza = row.doc;
+          tableRows +=
+            "<tr><td>" +
+            thisPizza.name +
+            "</td><td>" +
+            thisPizza.price +
+            "</td><td>" +
+            thisPizza.place +
+            "</td><td>" +
+            thisPizza.quantity +
+            "</td><td>";
+        });
+        document.querySelector("#listOfPizzas tbody").innerHTML = tableRows;
+      };
+
+
+      function loadPizzas () {
+        console.log("loadingpizzas");
+        db.allDocs({ include_docs: true, descending: true }, showPizzas);
+      };
+
+      db.changes({
+        since: "now",
+        live: true,
+      }).on("change", loadPizzas);
+
+      loadPizzas();
+
+      document.getElementById("addPizzaButton-1").addEventListener("click", addPizza);
+    </script>
+
+
+<!---the fresh items in storage--->
+            <section class="menu-1">
+              <!--   title   -->
+              <div class="title">
+              <br> <h2>Fresh.</h2>
+                <div class="menu-2"></div>
+              </div>
+              <!--    filter buttons  -->
+              <div class="btn-container">
+                <button class="filter-btn" type="button" data-id="all">All</button>
+                <button class="filter-btn" type="button" data-id="breakfast">Breakfast</button>
+                <button class="filter-btn" type="button" data-id="lunch">lunch</button>
+                <button class="filter-btn" type="button" data-id="shakes">shakes</button>
+              </div>
+              <!--  menu items    -->
+              <div class="section-center">
+                <!--   sigle item     -->
+                <!--kimchi rice-->
+               <article class="menu-item">
+                   <div class="menu-b-img">
+                  <img src="kimchirice.jpg" alt="menu-item" class="photo">
+                </div>
+                  <div class="item-info">
+                      <h4>Kimchi Rice</h4>
+                      <h4 class="price">Fridge</h4>
+                  </div>
+                </article>
+                <article class="menu-item">
+                    <div class="menu-b-img">
+                   <img src="shushi.jpg" alt="menu-item" class="photo">
+                 </div>
+                   <div class="item-info">
+                       <h4>Ramen</h4>
+                       <h4 class="price">Fridge</h4>
+                   </div>
+                 </article>
+                 <!--Donuts-->
+               <article class="menu-item">
+                   <div class="menu-b-img">
+                  <img src="donuts.jpg" alt="menu-item" class="photo">
+                </div>
+                  <div class="item-info">
+                      <h4>Donuts</h4>
+                      <h4 class="price">fridge</h4>
+                  </div>
+                </article>
+                <!--Tteokbokki-->
+              <article class="menu-item">
+                  <div class="menu-b-img">
+                 <img src="tteokbokki.jpg" alt="menu-item" class="photo">
+               </div>
+                 <div class="item-info">
+                     <h4>Tteokbokki</h4>
+                     <h4 class="price">Fridge</h4>
+                 </div>
+               </article>
+              </div>
+            </section>
+
+
+
+
+
+    <!--btns->
+        <!-footer-->
+        <footer>
+          <div class="footer-content">
+  <!--add all information-->
+  <h6>LESS WASTE <br>Community. </h6>
+  <p>Usually, the problems people tend to have leftovers from are certain foods in the refrigerator, forgetting that an item is about to expire, and buying too much or too many items that they cannot eat by the recommended expiration date. This application creates an ingredient list to include products that are left in the refrigerator, reminding consumers that those ingredients are still available. When the consumer knows they cannot eat the product within the long expiration date, they can then share the product in the application in a form of exchange and donation. 
+  </p>
+
+<ul class="socials">
+   <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+   <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+   <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+   <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+   <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+</ul>
+<div class="footer-bottom">
+   <!-- add all information -->
+   <p>copyright &copy;2021 <a href="#">LessWasteWebsite</a> </p>
+</div>
+</div>
+        </footer>
+
+
+  </body>
+</html>

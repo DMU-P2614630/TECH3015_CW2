@@ -1,0 +1,14 @@
+body{
+  min-height: 200vh;
+}
+h1{
+  padding-top: 70px;
+  text-align: center;
+}
+form{
+text-align: center;
+}
+
+input[type=text]:focus {
+  border: 3px solid #555;
+}
